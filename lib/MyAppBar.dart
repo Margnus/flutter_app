@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/TutorialHome.dart';
 
 class MyAppBar extends StatelessWidget {
 
@@ -64,6 +65,6 @@ class MyScaffold extends StatelessWidget {
 void main() {
   runApp(new MaterialApp(
     title: 'My app', // used by the OS task switcher
-    home: new MyScaffold(),
+    home: new TutorialHome(),
   ));
 }
