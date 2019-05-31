@@ -11,6 +11,10 @@ class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+//      drawer: new Drawer(
+//        child: new Sem,
+//      ),
+//      bottomNavigationBar: new N,
       appBar: new AppBar(
         leading:
             new IconButton(icon: new Icon(Icons.add_to_queue), onPressed: null),
@@ -25,7 +29,11 @@ class TutorialHome extends StatelessWidget {
       ),
       //body占屏幕的大部分
       body: new Center(
-        child: new BottomItem(),
+//        child: new BottomItem(),
+          child: ListView.builder(itemBuilder: (context, index){
+              return new BottomItem();
+          },
+          itemCount: 20,),
       ),
       floatingActionButton: new FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
@@ -51,7 +59,7 @@ class BottomItem extends StatelessWidget {
               new Icon(
                 icon,
                 size: 16,
-                color: Colors.cyanAccent,
+                color: Colors.blue,
               ),
               new Padding(padding: new EdgeInsets.only(left: 5)),
               new Text(
@@ -74,7 +82,7 @@ class BottomItem extends StatelessWidget {
             child: new Padding(
                 padding: new EdgeInsets.only(left: 10),
                 child: new Column(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     new Container(
                       child: new Text(
@@ -95,7 +103,8 @@ class BottomItem extends StatelessWidget {
                         _buildBottomItem(Icons.school, "1000"),
                         _buildBottomItem(Icons.link, "1000"),
                       ],
-                    )
+                    ),
+                  new Padding(padding: new EdgeInsets.only(top: 5)),
                   ],
                 ))),
       ),
