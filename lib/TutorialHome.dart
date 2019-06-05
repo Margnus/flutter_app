@@ -7,9 +7,48 @@ void main() {
   ));
 }
 
+// ignore: must_be_immutable
 class TutorialHome extends StatelessWidget {
+//  List<Widget> _list;
+
+  Widget buildGrid() {
+    return new GridView.extent(maxCrossAxisExtent: 150.0,
+    padding: EdgeInsets.all(4.0),
+    mainAxisSpacing: 4.0,
+      crossAxisSpacing: 4.0,
+      children: buildGridItem(30),
+    );
+  }
+
+  buildGridItem(int count) {
+    return new List<Container>.generate(count,
+        (int index) =>  new Container(child: new Image.asset('image/ic_wechat.png')));
+  }
+
   @override
   Widget build(BuildContext context) {
+//    _list = new List();
+//    _list.add(new Text(
+//      "ttttt",
+//      style: new TextStyle(fontSize: 14, color: Colors.red),
+//    ));
+//    _list.add(new Text(
+//      "ttttt",
+//      style: new TextStyle(fontSize: 14, color: Colors.blue),
+//    ));
+//    _list.add(new Text(
+//      "ttttt",
+//      style: new TextStyle(fontSize: 14, color: Colors.black),
+//    ));
+//    _list.add(new Text(
+//      "ttttt",
+//      style: new TextStyle(fontSize: 14, color: Colors.blueAccent),
+//    ));
+//    _list.add(new Text(
+//      "ttttt",
+//      style: new TextStyle(fontSize: 14, color: Colors.blueGrey),
+//    ));
+
     return new Scaffold(
 //      drawer: new Drawer(
 //        child: new Sem,
@@ -26,15 +65,26 @@ class TutorialHome extends StatelessWidget {
             onPressed: null,
           ),
         ],
+//        bottom: new TabBar(tabs: _list, controller: TabController(length: 5),),
       ),
       //body占屏幕的大部分
-      body: new Center(
-//        child: new BottomItem(),
-          child: ListView.builder(itemBuilder: (context, index){
-              return new BottomItem();
-          },
-          itemCount: 20,),
-      ),
+      body: buildGrid(),
+//          new Column(
+//            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//            crossAxisAlignment: CrossAxisAlignment.center,
+//            mainAxisSize: MainAxisSize.max,
+//            children: <Widget>[
+//              new Image.asset('image/ic_wechat.png', fit: BoxFit.cover),
+//              new Image.network("https://flutterchina.club/tutorials/layout/images/row-spaceevenly-visual.png", fit: BoxFit.cover,)
+//            ],
+//          ),
+
+//            ListView.builder(
+//              itemBuilder: (context, index) {
+//                return new BottomItem();
+//              },
+//              itemCount: 20,
+//            ),
       floatingActionButton: new FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
         child: new Icon(Icons.add),
@@ -42,6 +92,8 @@ class TutorialHome extends StatelessWidget {
       ),
     );
   }
+
+
 }
 
 class BottomItem extends StatelessWidget {
@@ -49,7 +101,7 @@ class BottomItem extends StatelessWidget {
     return new Expanded(
         flex: 1,
         child: new Center(
-          child: new Row(
+          child: new Column(
             //主轴居中，横向居中
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -104,7 +156,7 @@ class BottomItem extends StatelessWidget {
                         _buildBottomItem(Icons.link, "1000"),
                       ],
                     ),
-                  new Padding(padding: new EdgeInsets.only(top: 5)),
+                    new Padding(padding: new EdgeInsets.only(top: 5)),
                   ],
                 ))),
       ),
