@@ -38,7 +38,7 @@ class TabbedAppBarSample extends StatelessWidget {
 }
 
 class Choice {
-  const Choice({ this.title, this.icon });
+  const Choice({ required this.title, required this.icon });
   final String title;
   final IconData icon;
 }
@@ -53,13 +53,13 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class ChoiceCard extends StatelessWidget {
-  const ChoiceCard({ Key key, this.choice }) : super(key: key);
+  const ChoiceCard({super.key, required this.choice });
 
   final Choice choice;
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    final TextStyle? textStyle = Theme.of(context).textTheme.displayMedium;
     return new Card(
       color: Colors.white,
       child: new Center(
@@ -67,7 +67,7 @@ class ChoiceCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Icon(choice.icon, size: 128.0, color: textStyle.color),
+            new Icon(choice.icon, size: 128.0, color: textStyle?.color),
             new Text(choice.title, style: textStyle),
           ],
         ),

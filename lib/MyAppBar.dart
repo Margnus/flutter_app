@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/TutorialHome.dart';
 
 class MyAppBar extends StatelessWidget {
-
-  MyAppBar({this.title}) : super();
-
+  const MyAppBar({super.key, required this.title});
   final Widget title;
 
   @override
@@ -48,7 +46,7 @@ class MyScaffold extends StatelessWidget {
           new MyAppBar(
             title: new Text(
               'Example title',
-              style: Theme.of(context).primaryTextTheme.title,
+              style: Theme.of(context).primaryTextTheme.displayMedium,
             ),
           ),
           new Expanded(

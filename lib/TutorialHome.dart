@@ -129,7 +129,7 @@ class BottomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
       child: new Card(
-        child: new FlatButton(
+        child: new ElevatedButton(
             onPressed: () => print("FlatButton onPressed"),
             child: new Padding(
                 padding: new EdgeInsets.only(left: 10),
