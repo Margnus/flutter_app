@@ -28,7 +28,8 @@ class MyFirstPage extends StatefulWidget {
   final String title;
 
   @override
-  State<StatefulWidget> createState() => _MyFirstState();
+  State<StatefulWidget> createState() =>_myFadeTest();
+// _MyFirstState();
 }
 
 class _MyFirstState extends State<MyFirstPage> {
@@ -117,4 +118,37 @@ class _MyFirstState extends State<MyFirstPage> {
     );
   }
 
+}
+
+class _myFadeTest extends State<MyFirstPage> with TickerProviderStateMixin{
+  
+  late AnimationController controller;
+  late CurvedAnimation curved;
+  
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: const Duration(microseconds: 2000),
+        vsync: this);
+    curved = CurvedAnimation(parent: controller, curve: Curves.easeInQuad);
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(
+        child: FadeTransition(opacity: curved, child:  const FlutterLogo(size: 100,),),
+      ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Fade',
+          onPressed: (){
+            controller.forward();
+          },
+        child: const Icon(Icons.brush),
+      ),
+    );
+  }
+  
 }
